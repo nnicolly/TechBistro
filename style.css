@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+:root {
+    --cor-de-fundo:#efe8d8 ;
+    --cor-de-fundo-box:#809671;
+    --cor-do-link: #725c3a;
+}
+
+body {
+    background-color: var(--cor-de-fundo);
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-do-link);
+}
+
+/* ------------------------------ Seção Cabeçalho -------------------------------*/
+.cabecalho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3px 25% 3px;
+    background-color: var(--cor-de-fundo-box);
+    max-width: 100vw;
+    white-space: nowrap;
+}
+
+.cabecalho__titulo {
+    color: #f1dfc2
+}
+
+main{
+    height: 65vh;
+}
+
+/* ------------------------------ Seção Rodapé -------------------------------*/
+
+footer{
+    width: 100%;
+    color: #f1dfc2;
+}
+
+#footer_content {
+    background-color: var(--cor-de-fundo-box);
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#footer_content h1 {
+    font-size: 1.5rem;
+    margin-bottom:0;
+}
+
+#footer_content p{
+    font-size: 13px ;
+    margin-top: 0.5rem;
+}
+
+#footer_social_media{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 20px;
+}
+
+#footer_social_media i:hover {
+    color: #e5adab; 
+    transform: scale(1.2);
+    transition: 0.3s;
+}
