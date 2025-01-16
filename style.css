@@ -37,20 +37,42 @@ a {
     color: #f1dfc2
 }
 
-.tabela-produtos{
-    display:grid ;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px ;
+.product-section{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding-left: 10rem;
+    padding-right: 50rem;
+}
+.cardapio__titulo{
+    font-size: 23px;
+    color: #805e33;
 }
 
+.product-container{
+    display:grid ;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+}
 .produto-card img {
-    width: 100%; /* A imagem ocupa toda a largura do card */
-    height: 200px; /* Define uma altura fixa */
-    object-fit: cover; /* Garante que a imagem seja ajustada sem distorções */
-    border-radius: 8px; /* Adiciona bordas arredondadas */
+    width: 50%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
+.produto-card h2{
+    font-size: 18px;
+    color: #805e33;
+    white-space: nowrap; /*faz com que o texto não quebre*/
+}
+
+.produto-card p{
+    color: #805e33;
+    font-weight: bold;
+}
 /* ------------------------------ Seção Rodapé -------------------------------*/
 
 footer{
@@ -84,7 +106,7 @@ footer{
 }
 
 #footer_social_media i:hover {
-    color: #e5adab; 
+    color: #e5e0d8; 
     transform: scale(1.2);
     transition: 0.3s;
 }
