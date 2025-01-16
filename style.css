@@ -37,8 +37,18 @@ a {
     color: #f1dfc2
 }
 
-main{
-    height: 65vh;
+.tabela-produtos{
+    display:grid ;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px ;
+    justify-content: center;
+}
+
+.produto-card img {
+    width: 100%; /* A imagem ocupa toda a largura do card */
+    height: 200px; /* Define uma altura fixa */
+    object-fit: cover; /* Garante que a imagem seja ajustada sem distorções */
+    border-radius: 8px; /* Adiciona bordas arredondadas */
 }
 
 /* ------------------------------ Seção Rodapé -------------------------------*/
