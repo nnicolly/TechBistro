@@ -37,13 +37,15 @@ a {
     color: #f1dfc2
 }
 
+/* ------------------------------ Seção principal do site -------------------------------*/
 .product-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 10rem;
-    padding-right: 50rem;
+    padding: 0 2rem;
+    max-width: 800px;
+    text-align: center;
 }
 .cardapio__titulo{
     font-size: 23px;
@@ -53,25 +55,64 @@ a {
 .product-container{
     display:grid ;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
-    gap: 1px;
-    justify-content: center;
-    align-items: center;
-}
-.produto-card img {
-    width: 50%;
-    object-fit: cover;
+    gap: 10px;
+    width: 100%;
+    max-height: 400px; /* altura máxima do cardápio */
+    overflow-y: auto; /* scroll vertical */
+    padding: 1rem;
     border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding-bottom: 5rem;
+}
+
+.produto-card {  /* fundo da imagem do produto */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    background-color: #809671; 
+    padding: 8px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    width:170px; 
+    height: 200px;
+    position: relative;
+}
+
+.produto-card img {
+    width:100%;
+    height: 130px; /* Altura menor para imagens */
+    object-fit: cover;/* Ajusta a imagem sem distorções */
+    border-radius: 8px;
+    
 }
 
 .produto-card h2{
-    font-size: 18px;
-    color: #805e33;
+    font-size: 0.85rem; 
+    margin: 5px 0;
+    color: #f1dfc2 ;
     white-space: nowrap; /*faz com que o texto não quebre*/
+    text-align: left;
 }
 
 .produto-card p{
-    color: #805e33;
+    color: #f1dfc2;
     font-weight: bold;
+    font-size: 0.8rem;
+    margin: 3px 0;
+}
+
+.produto-card button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #aaaaaa;
+    margin-top: 5px;
+    position: absolute;
+    right: 10px; 
+    top: 10px;
+
 }
 /* ------------------------------ Seção Rodapé -------------------------------*/
 
