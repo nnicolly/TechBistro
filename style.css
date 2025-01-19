@@ -38,6 +38,16 @@ a {
 }
 
 /* ------------------------------ Seção principal do site -------------------------------*/
+
+/* Container principal (Cardápio e Formulário) */
+main {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 2rem;
+    padding: 2rem;/
+}
+
 .product-section{
     display: flex;
     flex-direction: column;
@@ -46,26 +56,27 @@ a {
     padding: 0 2rem;
     max-width: 800px;
     text-align: center;
+    margin-bottom: 1rem
 }
 .cardapio__titulo{
     font-size: 23px;
     color: #805e33;
 }
 
-.product-container{
-    display:grid ;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
-    gap: 10px;
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
     width: 100%;
-    max-height: 400px; /* altura máxima do cardápio */
-    overflow-y: auto; /* scroll vertical */
+    max-height: 400px; 
+    overflow-y: auto; 
+    overflow-x: hidden;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    padding-bottom: 5rem;
 }
 
-.produto-card {  /* fundo da imagem do produto */
+.produto-card {
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -76,12 +87,11 @@ a {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     width:170px; 
     height: 200px;
-    position: relative;
 }
 
 .produto-card img {
     width:100%;
-    height: 130px; /* Altura menor para imagens */
+    height: 130px;
     object-fit: cover;/* Ajusta a imagem sem distorções */
     border-radius: 8px;
     
@@ -113,6 +123,110 @@ a {
     right: 10px; 
     top: 10px;
 
+}
+
+/* ------------------------------ Seção Adicionar Produto ------------------------------- */
+.add-product-section {
+    max-width: 400px; 
+    background-color: #efe8d8; 
+    border: 2px solid #809671; 
+    padding: 0 1rem 1rem;
+    margin-top: 5rem;
+    margin-right: 13rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.add-product-title {
+    font-size: 1.5rem;
+    color: #805e33;
+    margin-bottom: 1rem;
+}
+
+.add-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #809671;
+    border-radius: 5px;
+    outline: none;
+    background-color: #fff; 
+}
+
+.form-group input::placeholder {
+    color: #805e33;
+}
+
+.form-group input:focus {
+    border-color: #687d5a;
+    box-shadow: 0 0 5px rgba(128, 150, 113, 0.5);
+}
+
+/* Botões estilizados */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-submit, .btn-clear {
+    padding: 0.5rem 1rem;
+    border: 2px solid #809671;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #809671;
+    color: #fff;
+}
+
+.btn-clear {
+    background-color: #fff;
+    color: #809671;
+}
+
+.btn-submit:hover {
+    background-color: #687d5a;
+}
+
+.btn-clear:hover {
+    background-color: #f0f0f0;
+}
+
+/* ------------------------------ Responsividade ------------------------------- */
+/* Responsividade para telas médias */
+@media (max-width: 1024px) {
+    .product-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em telas médias */
+        gap: 15px; 
+    }
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .add-product-section {
+        margin: 0 auto 2rem;
+        width: 90%; 
+    }
+
+    .product-section {
+        width: 100%; 
+    }
+
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 /* ------------------------------ Seção Rodapé -------------------------------*/
 
