@@ -119,5 +119,96 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const apiBaseUrl = 'http://localhost:3000'; // URL do servidor
+    
+        // Selecionar os elementos principais
+        const productContainer = document.querySelector('.product-container');
+        const form = document.querySelector('.add-product-form');
+    
+        // Função para carregar os produtos do servidor
+        async function carregarProdutos() {
+            try {
+                const response = await fetch(`${apiBaseUrl}/produtos`);
+                const produtos = await response.json();
+    
+                // Limpa o container antes de renderizar
+                productContainer.innerHTML = '';
+    
+                // Adiciona cada produto ao container
+                produtos.forEach(produto => {
+                    const productCard = criarCardProduto(produto);
+                    productContainer.appendChild(productCard);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar os produtos:', error);
+            }
+        }
+    
+        // Função para criar o HTML de um card de produto
+        function criarCardProduto(produto) {
+            const card = document.createElement('div');
+            card.classList.add('produto-card');
+    
+            card.innerHTML = `
+                <img src="${produto.imagem}" alt="${produto.nome}">
+                <h2>${produto.nome}</h2>
+                <p>R$ ${produto.preco.toFixed(2)}</p>
+                <button class="delete-btn" data-id="${produto.id}">
+                    <i class="fa-regular fa-trash-can"></i>
+                </button>
+            `;
+    
+            // Evento de clique na lixeira
+            const deleteBtn = card.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', () => excluirProduto(produto.id));
+    
+            return card;
+        }
+    
+        // Função para excluir um produto
+        async function excluirProduto(id) {
+            try {
+                await fetch(`${apiBaseUrl}/produtos/${id}`, {
+                    method: 'DELETE',
+                });
+                console.log(`Produto ${id} excluído.`);
+                carregarProdutos(); // Atualiza os produtos após exclusão
+            } catch (error) {
+                console.error('Erro ao excluir o produto:', error);
+            }
+        }
+    
+        // Evento de envio do formulário para adicionar um novo produto
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evita o recarregamento da página
+    
+            // Pega os valores do formulário
+            const nome = document.querySelector('#product-name').value;
+            const preco = parseFloat(document.querySelector('#product-price').value);
+            const imagem = document.querySelector('#product-image').value;
+    
+            const novoProduto = { nome, preco, imagem };
+    
+            try {
+                await fetch(`${apiBaseUrl}/produtos`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(novoProduto),
+                });
+                console.log('Produto adicionado:', novoProduto);
+                form.reset(); // Limpa o formulário
+                carregarProdutos(); // Atualiza os produtos
+            } catch (error) {
+                console.error('Erro ao adicionar o produto:', error);
+            }
+        });
+    
+        // Carrega os produtos ao carregar a página
+        carregarProdutos();
+    </script>
 </body>
 </html>
