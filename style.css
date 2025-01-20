@@ -45,7 +45,8 @@ main {
     justify-content: space-between; 
     align-items: flex-start; 
     gap: 2rem;
-    padding: 2rem;/
+    padding: 2rem;
+    flex-wrap: wrap;
 }
 
 .product-section{
@@ -77,6 +78,7 @@ main {
 }
 
 .produto-card {
+    position: relative; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -85,7 +87,7 @@ main {
     padding: 8px; 
     border-radius: 8px; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    width:170px; 
+    width: 170px; 
     height: 200px;
 }
 
@@ -112,17 +114,20 @@ main {
     margin: 3px 0;
 }
 
-.produto-card button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #aaaaaa;
-    margin-top: 5px;
+.produto-card .delete-btn {
     position: absolute;
-    right: 10px; 
-    top: 10px;
+    top: 10px; 
+    left: 8px; 
+    background: transparent; 
+    border: none; 
+    font-size: 1.2rem; 
+    cursor: pointer; 
+    color: #acacac;
+}
 
+.produto-card .delete-btn:hover {/* Animação ao passar o mouse por cima */
+    color: #ad0909; 
+    transform: scale(1.1); 
 }
 
 /* ------------------------------ Seção Adicionar Produto ------------------------------- */
@@ -216,16 +221,19 @@ main {
     }
 
     .add-product-section {
+        order: 1;
         margin: 0 auto 2rem;
         width: 90%; 
     }
 
     .product-section {
+        order: 2;
         width: 100%; 
     }
 
     .product-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 }
 /* ------------------------------ Seção Rodapé -------------------------------*/
