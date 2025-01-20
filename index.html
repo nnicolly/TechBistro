@@ -11,7 +11,6 @@
     <title>Tech Bistro</title>
 </head>
 <body>
-    <!-- Menu -->
     <header class="cabecalho">
         <h1 class="cabecalho__titulo">Tech Bistro</h1>
     </header>
@@ -19,74 +18,19 @@
     <main>
         <section class="product-section">
             <h1 class="cardapio__titulo">CARDÁPIO</h1>
-            <div class="product-container">
-                <div class="produto-card">
-                    <img src="assets/espresso.jpg" alt="Café espresso">
-                    <h2>Espresso</h2>
-                    <p>R$ 8,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                	<img src="assets/capuccino.jpg" alt="Capuccino">
-                    <h2>Capuccino</h2>
-                    <p>$ 10,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                    <img src="assets/hot chocolate.jpg" alt="Chocolate Quente">
-                    <h2>Chocolate Quente</h2>
-                    <p>R$ 12,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                    <img src="assets/matcha green tea.jpg" alt="Chá Matcha">
-                    <h2>Chá Matcha</h2>
-                    <p>R$ 15,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                    <img src="assets/cookies.jpg" alt="Cookies">
-                    <h2>Cookies</h2>
-                    <p>R$ 8,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                    <img src="assets/croissant.jpg" alt="Croissant">
-                    <h2>Croissant</h2>
-                    <p>R$ 10,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                    <img src="assets/toast.jpg" alt="Torrada Gourmet">
-                    <h2>Torrada Gourmet</h2>
-                    <p>R$ 12,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                    <img src="assets/strawberry cake.jpg" alt="Bolo de Morango">
-                    <h2>Bolo de Morango</h2>
-                    <p>R$ 15,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-                <div class="produto-card">
-                    <img src="assets/pancakes.jpg" alt="Panquecas Americanas">
-                    <h2>Panquecas Americanas</h2>
-                    <p>R$ 20,00</p>
-                    <button class="delete-btn"><i class="fa-regular fa-trash-can"></i></button>
-                </div>
-            </div>
+            <div class="product-container"></div>
         </section>
         <section class="add-product-section">
             <h1 class="add-product-title">ADICIONAR PRODUTO:</h1>
-            <form class="add-product-form">
+            <form class="add-product-form" enctype="multipart/form-data">
                 <div class="form-group">
-                    <input type="text" id="product-name" name="product-name" placeholder="nome..." required>
+                    <input type="text" id="product-name" name="nome" placeholder="nome..." required>
                 </div>
                 <div class="form-group">
-                    <input type="number" id="product-price" name="product-price" placeholder="valor..." step="0.01" required>
+                    <input type="number" id="product-price" name="preco" placeholder="valor..." step="0.01" required>
                 </div>
                 <div class="form-group">
-                    <input type="file" id="product-image" name="product-image" placeholder="imagem..." accept="image/*" required>
+                    <input type="file" id="product-image" name="imagem" placeholder="imagem..." accept="image/*" required>
                 </div>
                 <div class="form-buttons">
                     <button type="submit" class="btn-submit">Guardar</button>
@@ -102,16 +46,13 @@
                 <h1>Tech Bistro</h1>
                 <p> Este site foi desenvolvido por Nicolly Araujo, estudante de programação e participante do programa Oracle
                 Next Education ;)</p>
-
                 <div id="footer_social_media">
                     <a href="https://www.instagram.com/_nccly/" class="footer-link" id="Instagram">
                         <i class="fa-brands fa-instagram"></i>
                     </a>
-
                     <a href="https://www.linkedin.com/in/nicolly-araujo-33172521b/" class="footer-link" id="Linkedin">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
-
                     <a href="https://github.com/nnicolly" class="footer-link" id="Github">
                         <i class="fa-brands fa-github"></i>
                     </a>
@@ -121,22 +62,18 @@
     </footer>
 
     <script>
-        const apiBaseUrl = 'http://localhost:3000'; // URL do servidor
-    
-        // Selecionar os elementos principais
-        const productContainer = document.querySelector('.product-container');
+        const apiBaseUrl = 'http://localhost:3000';
+
         const form = document.querySelector('.add-product-form');
-    
-        // Função para carregar os produtos do servidor
+        const productContainer = document.querySelector('.product-container');
+
         async function carregarProdutos() {
             try {
                 const response = await fetch(`${apiBaseUrl}/produtos`);
                 const produtos = await response.json();
-    
-                // Limpa o container antes de renderizar
+
                 productContainer.innerHTML = '';
-    
-                // Adiciona cada produto ao container
+
                 produtos.forEach(produto => {
                     const productCard = criarCardProduto(produto);
                     productContainer.appendChild(productCard);
@@ -145,12 +82,11 @@
                 console.error('Erro ao carregar os produtos:', error);
             }
         }
-    
-        // Função para criar o HTML de um card de produto
+
         function criarCardProduto(produto) {
             const card = document.createElement('div');
             card.classList.add('produto-card');
-    
+
             card.innerHTML = `
                 <img src="${produto.imagem}" alt="${produto.nome}">
                 <h2>${produto.nome}</h2>
@@ -159,55 +95,46 @@
                     <i class="fa-regular fa-trash-can"></i>
                 </button>
             `;
-    
-            // Evento de clique na lixeira
+
             const deleteBtn = card.querySelector('.delete-btn');
             deleteBtn.addEventListener('click', () => excluirProduto(produto.id));
-    
+
             return card;
         }
-    
-        // Função para excluir um produto
+
         async function excluirProduto(id) {
             try {
                 await fetch(`${apiBaseUrl}/produtos/${id}`, {
                     method: 'DELETE',
                 });
-                console.log(`Produto ${id} excluído.`);
-                carregarProdutos(); // Atualiza os produtos após exclusão
+                carregarProdutos();
             } catch (error) {
                 console.error('Erro ao excluir o produto:', error);
             }
         }
-    
-        // Evento de envio do formulário para adicionar um novo produto
+
         form.addEventListener('submit', async (e) => {
-            e.preventDefault(); // Evita o recarregamento da página
-    
-            // Pega os valores do formulário
-            const nome = document.querySelector('#product-name').value;
-            const preco = parseFloat(document.querySelector('#product-price').value);
-            const imagem = document.querySelector('#product-image').value;
-    
-            const novoProduto = { nome, preco, imagem };
-    
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
             try {
-                await fetch(`${apiBaseUrl}/produtos`, {
+                const response = await fetch(`${apiBaseUrl}/produtos`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(novoProduto),
+                    body: formData,
                 });
-                console.log('Produto adicionado:', novoProduto);
-                form.reset(); // Limpa o formulário
-                carregarProdutos(); // Atualiza os produtos
+
+                if (response.ok) {
+                    form.reset();
+                    carregarProdutos();
+                } else {
+                    console.error('Erro ao adicionar o produto.');
+                }
             } catch (error) {
                 console.error('Erro ao adicionar o produto:', error);
             }
         });
-    
-        // Carrega os produtos ao carregar a página
+
         carregarProdutos();
     </script>
 </body>

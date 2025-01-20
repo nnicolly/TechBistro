@@ -1,6 +1,20 @@
 const express = require('express');
+const multer = require('multer');
+const path = require('path');
+
 const app = express();
 const PORT = 3000;
+
+// Configuração para upload de arquivos
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'assets/'); // Salva as imagens na pasta 'assets'
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); // Nome único para cada arquivo
+    }
+});
+const upload = multer({ storage });
 
 app.use(express.json());
 app.use(express.static(__dirname));
@@ -21,12 +35,12 @@ app.get('/produtos', (req, res) => {
     res.json(produtos);
 });
 
-app.post('/produtos', (req, res) => {
+app.post('/produtos', upload.single('imagem'), (req, res) => {
     const novoProduto = {
         id: produtos.length + 1,
         nome: req.body.nome,
-        preco: req.body.preco,
-        imagem: req.body.imagem,
+        preco: parseFloat(req.body.preco),
+        imagem: req.file.path,
     };
     produtos.push(novoProduto);
     res.status(201).json(novoProduto);
