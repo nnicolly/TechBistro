@@ -28,3 +28,12 @@ Antes de rodar o projeto, certifique-se de que você tem **Node.js** instalado n
    ```arduino
    http://localhost:3000
    
+## Estrutura do projeto
+```bash
+techbistro/
+├── assets/          # Imagens do cardápio
+├── style.css        # Estilos do site
+├── index.html       # Estrutura HTML principal
+├── server.js        # Servidor Node.js (backend)
+├── package.json     # Configuração do Node.js e dependências
+└── README.md        # Documentação do projeto
