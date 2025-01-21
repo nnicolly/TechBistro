@@ -8,9 +8,7 @@ Tech Bistro é um projeto de um site de cardápio digital para cafeterias. Ele p
 - Remover produtos clicando na lixeira associada ao card.
 
 ## Pré-requisitos
-Antes de rodar o projeto, certifique-se de que você tem:
-- **Node.js** instalado no seu computador (https://nodejs.org/).
-- Um navegador moderno.
+Antes de rodar o projeto, certifique-se de que você tem **Node.js** instalado no seu computador (https://nodejs.org/).
 
 ## Como rodar o projeto localmente
 
