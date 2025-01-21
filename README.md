@@ -17,3 +17,16 @@ Antes de rodar o projeto, certifique-se de que você tem:
 1. **Clone o repositório:**
    ```bash
    git clone https://github.com/seu-usuario/techbistro.git
+2. **Clone o repositório:**
+   ```bash
+   cd techbistro
+3. Instale as dependências:
+   ```bash
+   npm install
+4. Inicie o servidor:
+   ```bash
+   node server.js
+5. Acesse no navegador: Abra o navegador e acesse:
+   ```arduino
+   http://localhost:3000
+   
